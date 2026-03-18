@@ -7,9 +7,9 @@ def index():
     name= request.args.get("name", "World")
     return render_template("index.html")
 
-@app.route("/greet")
+@app.route("/greet", methods=["POST"])
 def greet():
-    return render_template("greet.html", name=request.args.get("name", "World"))
+    return render_template("greet.html", name=request.form.get("name", "World"))
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
